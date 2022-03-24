@@ -33,9 +33,6 @@ namespace RestSharpInReqRes
             restRequest.AddHeader("Accept", "application/json");
             return restRequest;
         }
-
-
-
         public IRestResponse GetResponse(RestClient client, RestRequest request)
         {
             return client.Execute(request);

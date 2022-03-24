@@ -13,7 +13,6 @@ namespace RestSharpInReqRes.DTOs
         public long Total { get; set; }
         public long TotalPages { get; set; }
         public List<Data> Data { get; set; }
-
     }
 
     public class Data

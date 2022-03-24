@@ -8,7 +8,7 @@ namespace RestSharpInReqRes
     public class ValidatingResponces
     {
         [TestMethod]
-        public void VerifyListOfUsers()
+        public void VerifyGetUsers()
         {
             var crudmethods = new CRUDMethods();
             var response = crudmethods.GetUsers(); //returning objects of methods from the CRUDMETHODS class

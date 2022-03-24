@@ -87,6 +87,7 @@
     <Compile Include="CRUDMethods.cs" />
     <Compile Include="DTOs\CreateListOfUsersDTO.cs" />
     <Compile Include="DTOs\GetListOfUsersDTO.cs" />
+    <Compile Include="DTOs\Update.cs" />
     <Compile Include="ValidatingResponces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

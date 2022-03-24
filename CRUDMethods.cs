@@ -31,6 +31,7 @@ namespace RestSharpInReqRes
             CreateListOfUsersDTO content = user.GetContent<CreateListOfUsersDTO>(response);
             return content;
         }
+        
 
     }
 }

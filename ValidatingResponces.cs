@@ -8,7 +8,7 @@ namespace RestSharpInReqRes
     public class ValidatingResponces
     {
         [TestMethod]
-        public void VerifyGetUsers()
+        public void ValidateGetUsers()
         {
             var crudmethods = new CRUDMethods<GetListOfUsersDTO>();
             var user = crudmethods.GetUsers("api/users?page=2"); //returning objects of methods from the CRUDMETHODS class
@@ -17,7 +17,7 @@ namespace RestSharpInReqRes
             Assert.AreEqual("Lindsay", user.Data[1].First_name);
         }
         [TestMethod]
-        public void CreateNewUser()
+        public void ValidateCreateNewUser()
         {
             string payload= @"{
                                 ""name"": ""morpheus"",
@@ -27,7 +27,13 @@ namespace RestSharpInReqRes
             var user = crudmethods.CreateUsers("api/users",payload);
             Assert.AreEqual("morpheus", user.Name);
             Assert.AreEqual("leader", user.Job);
-
+        }
+        public void ValidateDeleteUser()
+        {
+            var crudmethods = new CRUDMethods<CreateListOfUsersDTO>();
+            var user = crudmethods.CreateUsers("api/users/2", payload);
+            Assert.AreEqual("morpheus", user.Name);
+            Assert.AreEqual("leader", user.Job);
         }
     }
 }

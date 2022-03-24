@@ -10,11 +10,11 @@ namespace RestSharpInReqRes
         [TestMethod]
         public void VerifyGetUsers()
         {
-            var crudmethods = new CRUDMethods();
-            var response = crudmethods.GetUsers(); //returning objects of methods from the CRUDMETHODS class
-            Assert.AreEqual(2, response.Page);
-            Assert.AreEqual("Michael", response.Data[0].First_name);
-            Assert.AreEqual("Lindsay", response.Data[1].First_name);
+            var crudmethods = new CRUDMethods<GetListOfUsersDTO>();
+            var user = crudmethods.GetUsers("/api/users?page=2"); //returning objects of methods from the CRUDMETHODS class
+            Assert.AreEqual(2, user.Page);
+            Assert.AreEqual("Michael", user.Data[0].First_name);
+            Assert.AreEqual("Lindsay", user.Data[1].First_name);
         }
         [TestMethod]
         public void CreateNewUser()
@@ -24,14 +24,9 @@ namespace RestSharpInReqRes
                                 ""job"": ""leader""
                                 }";
             var crudmethods = new CRUDMethods<CreateListOfUsersDTO>();
-            var user=crudmethods.cre
-
-            var url=user.SetUrl("api/users");
-            var request = user.CreatePostRequest(payload);
-            var response=user.GetResponse(url,request);
-            CreateListOfUsersDTO content = user.GetContent<CreateListOfUsersDTO>(response);
-            Assert.AreEqual("morpheus", content.Name);
-            Assert.AreEqual("leader", content.Job);
+            var user = crudmethods.CreateUsers("api/users",payload);
+            Assert.AreEqual("morpheus", user.Name);
+            Assert.AreEqual("leader", user.Job);
 
         }
     }

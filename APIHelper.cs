@@ -34,16 +34,11 @@ namespace RestSharpInReqRes
             restRequest.AddParameter("application/json", payload, ParameterType.RequestBody);
             return restRequest;
         }
-        public RestRequest CreateGetRequest(string payload)
+        public RestRequest CreateGetRequest()
         {
             var restRequest = new RestRequest(Method.GET);
             restRequest.AddHeader("Accept", "application/json");
             return restRequest;
-        }
-
-        internal object CreateGetRequest()
-        {
-            throw new NotImplementedException();
         }
 
         public RestRequest CreateDeleteRequest(string payload)

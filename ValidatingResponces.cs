@@ -23,7 +23,9 @@ namespace RestSharpInReqRes
                                 ""name"": ""morpheus"",
                                 ""job"": ""leader""
                                 }";
-            var user = new APIHelper<CreateListOfUsersDTO>();
+            var crudmethods = new CRUDMethods<CreateListOfUsersDTO>();
+            var user=crudmethods.cre
+
             var url=user.SetUrl("api/users");
             var request = user.CreatePostRequest(payload);
             var response=user.GetResponse(url,request);

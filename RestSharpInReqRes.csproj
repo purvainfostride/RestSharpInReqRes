@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="APIHelper.cs" />
     <Compile Include="CRUDMethods.cs" />
+    <Compile Include="DTOs\CreateListOfUsersDTO.cs" />
     <Compile Include="DTOs\ListOfUsersDTO.cs" />
     <Compile Include="ValidatingResponces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace RestSharpInReqRes
 {
-    public class APIHelper
+    public class APIHelper<T>
     {
         public RestClient restClient;
         public RestRequest restRequest;
@@ -33,11 +33,14 @@ namespace RestSharpInReqRes
             restRequest.AddHeader("Accept", "application/json");
             return restRequest;
         }
+
+
+
         public IRestResponse GetResponse(RestClient client, RestRequest request)
         {
             return client.Execute(request);
         }
-        public DTOs GetContent<DTOs>(RestResponse response)
+        public DTOs GetContent<DTOs>(IRestResponse response)
         {
             var contentOfUsers = response.Content;
             DTOs dTOs = JsonConvert.DeserializeObject<DTOs>(contentOfUsers);

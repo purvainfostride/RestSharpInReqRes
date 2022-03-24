@@ -12,7 +12,7 @@ namespace RestSharpInReqRes
 {
     public class CRUDMethods
     {
-        public ListOfUsersDTO GetUsers()
+        public GetListOfUsersDTO GetUsers()
         {
             //REQUEST
             var restClient = new RestClient("https://reqres.in/"); //creating var with RestClient method to pass base URL
@@ -26,7 +26,7 @@ namespace RestSharpInReqRes
             var content = response.Content;
 
             //Deserialization  (Convert JSON -> .NET)
-            var users = JsonConvert.DeserializeObject<ListOfUsersDTO>(content);
+            var users = JsonConvert.DeserializeObject<GetListOfUsersDTO>(content);
             return users;
 
         }

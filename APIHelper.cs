@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
 using System.IO;
+using Newtonsoft.Json;
+
 namespace RestSharpInReqRes
 {
     public class APIHelper
@@ -34,6 +36,12 @@ namespace RestSharpInReqRes
         public IRestResponse GetResponse(RestClient client, RestRequest request)
         {
             return client.Execute(request);
+        }
+        public DTOs GetContent<DTOs>(RestResponse response)
+        {
+            var contentOfUsers = response.Content;
+            DTOs dTOs = JsonConvert.DeserializeObject<DTOs>(contentOfUsers);
+            return dTOs;
         }
 
     }

@@ -24,7 +24,7 @@ namespace RestSharpInReqRes
             var response = restClient.Execute(restRequest);   //Handling response with interface by executing request
             var content = response.Content; //getting content
 
-            //Deserialization   (Convert JSON ->.NET)
+            //Deserialization  (Convert JSON -> .NET)
             var users = JsonConvert.DeserializeObject<ListOfUsersDTO>(content);
             return users;
 

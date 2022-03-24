@@ -9,11 +9,11 @@ namespace RestSharpInReqRes
         [TestMethod]
         public void VerifyListOfUsers()
         {
-            var demo = new CRUDMethods();
-            var response = demo.GetUsers(); //returning objects from the method
+            var crudmethods = new CRUDMethods();
+            var response = crudmethods.GetUsers(); //returning objects of methods from the CRUDMETHODS class
             Assert.AreEqual(2, response.Page);
-            Assert.AreEqual("Michael", response.Data[0].first_name);
-            Assert.AreEqual("Lindsay", response.Data[1].first_name);
+            Assert.AreEqual("Michael", response.Data[0].First_name);
+            Assert.AreEqual("Lindsay", response.Data[1].First_name);
         }
     }
 }

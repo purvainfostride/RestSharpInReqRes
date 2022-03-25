@@ -15,6 +15,7 @@ namespace RestSharpInReqRes
             Assert.AreEqual(2, user.Page);
             Assert.AreEqual("Michael", user.Data[0].First_name);
             Assert.AreEqual("Lindsay", user.Data[1].First_name);
+
         }
         [TestMethod]
         public void ValidateCreateNewUser()
@@ -28,12 +29,7 @@ namespace RestSharpInReqRes
             Assert.AreEqual("morpheus", user.Name);
             Assert.AreEqual("leader", user.Job);
         }
-        public void ValidateDeleteUser()
-        {
-            var crudmethods = new CRUDMethods<CreateListOfUsersDTO>();
-            var user = crudmethods.CreateUsers("api/users/2", payload);
-            Assert.AreEqual("morpheus", user.Name);
-            Assert.AreEqual("leader", user.Job);
-        }
+      
+
     }
 }

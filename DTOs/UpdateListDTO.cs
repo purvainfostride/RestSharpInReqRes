@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace RestSharpInReqRes.DTOs
 {
-    internal class Update
+    public class UpdateListDTO
     {
+        public string Name { get; set; }
+        public string Job { get; set; }
+        public DateTimeOffset UpdatedAt { get; set; }
     }
 }

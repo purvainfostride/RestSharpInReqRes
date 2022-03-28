@@ -12,33 +12,33 @@ namespace RestSharpInReqRes
 {
     public class CRUDMethods<T>
     {
-        public GetListOfUsersDTO GetListUsers(string endpoint)
+        public GetListUsersDTO GetListUsers(string endpoint)
         {
-            var user = new APIHelper<GetListOfUsersDTO>();
+            var user = new APIHelper<GetListUsersDTO>();
             var url = user.SetUrl(endpoint);
             var request = user.CreateGetRequest();
             var response = user.GetResponse(url, request);
-            GetListOfUsersDTO content = user.GetContent<GetListOfUsersDTO>(response);
+            GetListUsersDTO content = user.GetContent<GetListUsersDTO>(response);
             return content;
 
         }
-        public GetListResource GetListResourceUsers(string endpoint)
+        public GetListResourceDTO GetListResourceUsers(string endpoint)
         {
-            var user = new APIHelper<GetListResource>();
+            var user = new APIHelper<GetListResourceDTO>();
             var url = user.SetUrl(endpoint);
             var request = user.CreateGetRequest();
             var response = user.GetResponse(url, request);
-            GetListResource content = user.GetContent<GetListResource>(response);
+            GetListResourceDTO content = user.GetContent<GetListResourceDTO>(response);
             return content;
 
         }
-        public CreateListOfUsersDTO CreateUsers(string endpoint, string payload)
+        public CreateUserDTO CreateUsers(string endpoint, dynamic payload)
         {
-            var user = new APIHelper<CreateListOfUsersDTO>();
+            var user = new APIHelper<CreateUserDTO>();
             var url = user.SetUrl(endpoint);
             var request = user.CreatePostRequest(payload);
             var response = user.GetResponse(url, request);
-            CreateListOfUsersDTO content = user.GetContent<CreateListOfUsersDTO>(response);
+            CreateUserDTO content = user.GetContent<CreateUserDTO>(response);
             return content;
         }
         public UpdateListDTO UpdateUsers(string endpoint, string payload)

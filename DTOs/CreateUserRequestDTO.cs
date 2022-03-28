@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace RestSharpInReqRes.DTOs
 {
-    public class CreateListOfUsersDTO
+    public class CreateUserRequestDTO
     {
         public string Name { get; set; }
         public string Job { get; set; }
-        public long Id { get; set; }
-        public DateTimeOffset CreatedAt { get; set; }
+       
     }
 }

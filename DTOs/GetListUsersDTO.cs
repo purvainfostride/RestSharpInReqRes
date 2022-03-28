@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestSharpInReqRes.DTOs
 {
-    public class GetListOfUsersDTO
+    public class GetListUsersDTO
     {
         public long Page { get; set; }
         public long PerPage { get; set; }

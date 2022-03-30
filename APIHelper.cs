@@ -20,6 +20,7 @@ namespace RestSharpInReqRes
             var RestClient = new RestClient(url);
             return RestClient;
         }
+
         public IRestResponse GetResponse(RestClient client, RestRequest request)
         {
             return client.Execute(request);
@@ -31,7 +32,14 @@ namespace RestSharpInReqRes
             DTOs dTOs = JsonConvert.DeserializeObject<DTOs>(contentOfUsers);
             return dTOs;
         }
-          public RestRequest CreatePostRequest(string payload)
+        public RestRequest CreateGetRequest()
+        {
+            var restRequest = new RestRequest(Method.GET);
+            restRequest.AddHeader("Accept", "application/json");
+            restRequest.RequestFormat = DataFormat.Json;
+            return restRequest;          
+        }
+        public RestRequest CreatePostRequest(dynamic payload)
         {
             var restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Accept", "application/json");
@@ -45,12 +53,7 @@ namespace RestSharpInReqRes
             restRequest.AddParameter("application/json", payload, ParameterType.RequestBody);
             return restRequest;
         }
-        public RestRequest CreateGetRequest()
-        {
-            var restRequest = new RestRequest(Method.GET);
-            restRequest.AddHeader("Accept", "application/json");
-            return restRequest;
-        }
+       
 
     }
 }

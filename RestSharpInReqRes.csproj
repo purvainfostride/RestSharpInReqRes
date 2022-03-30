@@ -487,10 +487,18 @@
     <None Include="app.config" />
     <None Include="Features\GetUser.feature" />
     <None Include="packages.config" />
-    <None Include="TestData\CreateUser.json" />
-    <None Include="TestData\GetResourceUser.json" />
-    <None Include="TestData\GetUser.json" />
-    <None Include="TestData\UpdateUser.json" />
+    <None Include="TestData\CreateUser.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestData\GetResourceUser.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestData\GetUser.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestData\UpdateUser.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />

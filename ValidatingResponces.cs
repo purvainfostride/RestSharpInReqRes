@@ -2,6 +2,8 @@
 using System;
 using RestSharpInReqRes.DTOs;
 using AventStack.ExtentReports;
+using System.Net;
+
 namespace RestSharpInReqRes
 {
     [TestClass]
@@ -63,7 +65,7 @@ namespace RestSharpInReqRes
         [TestMethod]
         public void ValidateGetListUsers()
         {
-            var payload = HandleContent.Deserialize<GetListUsersDTO>("GetUser.json");
+            var payload = HandleContent.ParseJson<GetListUsersDTO>("GetUser.json");
             var crudmethods = new CRUDMethods<GetListUsersDTO>();
             var content = crudmethods.GetListUsers("api/users?page=2");
             Assert.AreEqual(payload.Page, content.Page);
@@ -73,7 +75,7 @@ namespace RestSharpInReqRes
         [TestMethod]
         public void ValidateGetListResourceUsers()
         {
-            var payload = HandleContent.Deserialize<GetListResourceDTO>("GetResourceUser.json");
+            var payload = HandleContent.ParseJson<GetListResourceDTO>("GetResourceUser.json");
             var crudmethods = new CRUDMethods<GetListResourceDTO>();
             var content = crudmethods.GetListResourceUsers("api/unknown");
             Assert.AreEqual(payload.Page, content.Page);
@@ -83,11 +85,38 @@ namespace RestSharpInReqRes
         [TestMethod]
         public void ValidateCreateNewUser()
         {
-            var payload = HandleContent.Deserialize<CreateUserRequestDTO>("CreateUser.json");
+            var payload = HandleContent.ParseJson<CreateUserRequestDTO>("CreateUser.json");
             var crudmethods = new CRUDMethods<CreateUserDTO>();
             var content = crudmethods.CreateUsers("api/users", payload);
+       
             Assert.AreEqual(payload.Name, content.Name);
             Assert.AreEqual(payload.Job, content.Job);
+        }
+
+        //public void ValidateDemoGetListUsers()
+        //{
+        //    var crudmethods = new CRUDMethods<GetListUsersDTO>();
+        //    var response = crudmethods.DemoGetListUsers();
+        //    Assert.AreEqual(2, response.Page);
+        //    //var payload = HandleContent.Deserialize<CreateUserRequestDTO>("CreateUser.json");
+        //    //var crudmethods = new CRUDMethods<CreateUserDTO>();
+        //    //var content = crudmethods.CreateUsers("api/users", payload);
+        //    //Assert.AreEqual(payload.Name, content.Name);
+        //    //Assert.AreEqual(payload.Job, content.Job);
+        //}
+        [TestMethod]
+        public void ValidateDemoGetListUsers()
+        {
+            //var payload = HandleContent.ParseJson<CreateUserRequestDTO>("CreateUser.json");
+            var crudmethods = new CRUDMethods<GetListUsersDTO>();
+            var content = crudmethods.GetListUsers("api/users?page=2");
+
+            Assert.AreEqual(2, content.Page);
+            //var payload = HandleContent.Deserialize<CreateUserRequestDTO>("CreateUser.json");
+            //var crudmethods = new CRUDMethods<CreateUserDTO>();
+            //var content = crudmethods.CreateUsers("api/users", payload);
+            //Assert.AreEqual(payload.Name, content.Name);
+            //Assert.AreEqual(payload.Job, content.Job);
         }
     }
 }

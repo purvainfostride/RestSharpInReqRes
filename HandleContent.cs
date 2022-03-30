@@ -21,7 +21,7 @@ namespace RestSharpInReqRes
             return JsonConvert.SerializeObject(payload, Formatting.Indented);
 
         }
-        public static T Deserialize<T>(string file)
+        public static T ParseJson<T>(string file) //Taking string file and parse it to JSON - return object after deserialize
         {
             return JsonConvert.DeserializeObject<T>(File.ReadAllText(file));
         }

@@ -28,7 +28,7 @@ namespace RestSharpInReqRes
         {
             createUserRequestDTO.Job = role;
         }
-        //[DeploymentItem("TestData")]
+
         [When(@"I send create user request")]
         public dynamic WhenISendCreateUserRequest()
         {

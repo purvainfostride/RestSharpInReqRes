@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\NUnit3TestAdapter.4.2.1\build\net35\NUnit3TestAdapter.props" Condition="Exists('packages\NUnit3TestAdapter.4.2.1\build\net35\NUnit3TestAdapter.props')" />
   <Import Project="packages\SpecFlow.NUnit.3.9.58\build\SpecFlow.NUnit.props" Condition="Exists('packages\SpecFlow.NUnit.3.9.58\build\SpecFlow.NUnit.props')" />
   <Import Project="packages\NUnit.3.13.1\build\NUnit.props" Condition="Exists('packages\NUnit.3.13.1\build\NUnit.props')" />
   <Import Project="packages\SpecFlow.Tools.MsBuild.Generation.3.9.58\build\SpecFlow.Tools.MsBuild.Generation.props" Condition="Exists('packages\SpecFlow.Tools.MsBuild.Generation.3.9.58\build\SpecFlow.Tools.MsBuild.Generation.props')" />
@@ -471,6 +472,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIHelper.cs" />
+    <Compile Include="StepDefinitions\CreateUserStepDefinitions.cs" />
     <Compile Include="CRUDMethods.cs" />
     <Compile Include="DTOs\CreateUserRequestDTO.cs" />
     <Compile Include="DTOs\CreateUserDTO.cs" />
@@ -485,6 +487,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Features\CreateUser.feature" />
     <None Include="Features\GetUser.feature" />
     <None Include="packages.config" />
     <None Include="TestData\CreateUser.json">
@@ -523,6 +526,7 @@
     <Error Condition="!Exists('packages\NUnit.3.13.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\NUnit.3.13.1\build\NUnit.props'))" />
     <Error Condition="!Exists('packages\SpecFlow.NUnit.3.9.58\build\SpecFlow.NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SpecFlow.NUnit.3.9.58\build\SpecFlow.NUnit.props'))" />
     <Error Condition="!Exists('packages\SpecFlow.NUnit.3.9.58\build\SpecFlow.NUnit.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SpecFlow.NUnit.3.9.58\build\SpecFlow.NUnit.targets'))" />
+    <Error Condition="!Exists('packages\NUnit3TestAdapter.4.2.1\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\NUnit3TestAdapter.4.2.1\build\net35\NUnit3TestAdapter.props'))" />
   </Target>
   <Import Project="packages\MSTest.TestAdapter.2.2.8\build\net45\MSTest.TestAdapter.targets" Condition="Exists('packages\MSTest.TestAdapter.2.2.8\build\net45\MSTest.TestAdapter.targets')" />
   <Import Project="packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets" Condition="Exists('packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets')" />

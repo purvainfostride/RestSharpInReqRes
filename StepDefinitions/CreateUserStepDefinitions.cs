@@ -2,6 +2,7 @@ using NUnit.Framework;
 using RestSharp;
 using RestSharpInReqRes.DTOs;
 using System;
+using System.Net;
 using TechTalk.SpecFlow;
 
 namespace RestSharpInReqRes
@@ -11,7 +12,7 @@ namespace RestSharpInReqRes
     {
         private const string baseUrl = "https://reqres.in/";
         private readonly CreateUserRequestDTO createUserRequestDTO;
-        public IRestResponse response;
+        public IRestResponse restResponse;
         public CreateUserStepDefinitions(CreateUserRequestDTO createUserRequestDTO)
         {
             this.createUserRequestDTO = createUserRequestDTO;
@@ -43,5 +44,12 @@ namespace RestSharpInReqRes
             var content = crudmethods.CreateUsers("api/users", WhenISendCreateUserRequest());
             Assert.AreEqual(WhenISendCreateUserRequest().Name, content.Name);
         }
+        [Then(@"the API Response status code is (.*)")]
+        public void ThenTheAPIResponseStatusCodeIs(int p0)
+        {
+            var api = new APIHelper<CreateUserDTO>();
+            Assert.AreEqual("201 Created", api.GetStatusCode());
+        }
+
     }
 }

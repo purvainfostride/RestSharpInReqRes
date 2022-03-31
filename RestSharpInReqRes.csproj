@@ -482,6 +482,7 @@
     <Compile Include="DTOs\UpdateListDTO.cs" />
     <Compile Include="HandleContent.cs" />
     <Compile Include="Reporter.cs" />
+    <Compile Include="Utility\Base.cs" />
     <Compile Include="ValidatingResponces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

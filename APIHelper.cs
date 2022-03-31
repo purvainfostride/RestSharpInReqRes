@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 using RestSharp;
 using System.IO;
 using Newtonsoft.Json;
+using System.Net;
 
 namespace RestSharpInReqRes
 {
     public class APIHelper<T>
     {
-        public RestClient restClient;
-        public RestRequest restRequest;
+        public static RestClient restClient;
+        public static RestRequest restRequest;
+        public static IRestResponse restResponse;
         public string baseUrl = "https://reqres.in/";
+      
         public RestClient SetUrl(string endpoint)
         {
             var url = Path.Combine(baseUrl, endpoint);
@@ -21,9 +24,16 @@ namespace RestSharpInReqRes
             return RestClient;
         }
 
-        public IRestResponse GetResponse(RestClient client, RestRequest request)
+        public IRestResponse GetResponse(RestClient restClient, RestRequest restRequest)
         {
-            return client.Execute(request);
+            return restResponse = restClient.Execute(restRequest);        
+        }
+     
+        public string GetStatusCode() {
+
+           var statusCode= (int)restResponse.StatusCode + " " + restResponse.StatusCode.ToString();
+            Console.WriteLine("Status Code is: "+statusCode);
+            return statusCode;
         }
 
         public DTOs GetContent<DTOs>(IRestResponse response)

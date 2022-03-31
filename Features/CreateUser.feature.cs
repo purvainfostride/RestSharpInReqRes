@@ -104,6 +104,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 10
  testRunner.Then("user is created successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+#line 11
+ testRunner.And("the API Response status code is 201", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

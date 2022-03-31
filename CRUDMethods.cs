@@ -43,9 +43,6 @@ namespace RestSharpInReqRes
             var requestJson=HandleContent.Serialize(payload);//serialize into json
             var request = user.CreatePostRequest(requestJson);
             var response = user.GetResponse(url, request);
-            HttpStatusCode statusCode = response.StatusCode;
-            int numCode = (int)statusCode;
-            Assert.AreEqual(201, numCode);
             CreateUserDTO content = user.GetContent<CreateUserDTO>(response);
             return content;
         }

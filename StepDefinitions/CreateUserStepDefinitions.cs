@@ -49,7 +49,15 @@ namespace RestSharpInReqRes
         {
             var api = new APIHelper<CreateUserDTO>();
             Assert.AreEqual(201, (int)api.GetStatusCode());
+         
         }
+        [Then(@"the API Response status description is ""([^""]*)""")]
+        public void ThenTheAPIResponseStatusDescriptionIs(string created)
+        {
+            var api = new APIHelper<CreateUserDTO>();
+            Assert.AreEqual(created, api.GetStatusDescription());
+        }
+
 
     }
 }

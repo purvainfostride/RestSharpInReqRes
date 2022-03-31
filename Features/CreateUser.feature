@@ -9,5 +9,7 @@ Scenario: To verify creation of user
 	When I send create user request
 	Then user is created successfully
 	And the API Response status code is 201
+	And the API Response status description is "Created"
+
 	
 

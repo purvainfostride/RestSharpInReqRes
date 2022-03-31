@@ -31,12 +31,17 @@ namespace RestSharpInReqRes
      
         public HttpStatusCode GetStatusCode() {
 
-            //var statusCod= (int)restResponse.StatusCode + " " + restResponse.StatusCode.ToString();
             var statusCode = restResponse.StatusCode;
-            Console.WriteLine("Status Code is: "+statusCode+" "+statusCode.ToString());
-
+            Console.WriteLine("Status Code is: "+(int)statusCode); 
             return statusCode;
         }
+        public string GetStatusDescription()
+        {
+            var statusDescription = restResponse.StatusDescription;
+            Console.WriteLine("StatusDescription is: " + statusDescription);
+            return statusDescription;
+        }
+
 
         public DTOs GetContent<DTOs>(IRestResponse response)
         {
@@ -58,6 +63,8 @@ namespace RestSharpInReqRes
             restRequest.AddParameter("application/json", payload, ParameterType.RequestBody);
             return restRequest;
         }
+
+
         public RestRequest CreatePutRequest(string payload)
         {
             var restRequest = new RestRequest(Method.PUT);

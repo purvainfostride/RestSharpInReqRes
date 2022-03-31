@@ -48,7 +48,7 @@ namespace RestSharpInReqRes
         public void ThenTheAPIResponseStatusCodeIs(int p0)
         {
             var api = new APIHelper<CreateUserDTO>();
-            Assert.AreEqual("201 Created", api.GetStatusCode());
+            Assert.AreEqual(201, (int)api.GetStatusCode());
         }
 
     }

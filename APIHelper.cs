@@ -29,10 +29,12 @@ namespace RestSharpInReqRes
             return restResponse = restClient.Execute(restRequest);        
         }
      
-        public string GetStatusCode() {
+        public HttpStatusCode GetStatusCode() {
 
-           var statusCode= (int)restResponse.StatusCode + " " + restResponse.StatusCode.ToString();
-            Console.WriteLine("Status Code is: "+statusCode);
+            //var statusCod= (int)restResponse.StatusCode + " " + restResponse.StatusCode.ToString();
+            var statusCode = restResponse.StatusCode;
+            Console.WriteLine("Status Code is: "+statusCode+" "+statusCode.ToString());
+
             return statusCode;
         }
 

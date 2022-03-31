@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using RestSharp;
 using RestSharpInReqRes.DTOs;
+using Snapshooter.NUnit;
 using System;
 using System.Net;
 using TechTalk.SpecFlow;
@@ -22,6 +23,7 @@ namespace RestSharpInReqRes
         public void GivenIInputName(string name)
         {
             createUserRequestDTO.Name = name;
+            
         }
 
         [Given(@"I input job ""([^""]*)""")]
@@ -43,19 +45,23 @@ namespace RestSharpInReqRes
             var crudmethods = new CRUDMethods<CreateUserDTO>();
             var content = crudmethods.CreateUsers("api/users", WhenISendCreateUserRequest());
             Assert.AreEqual(WhenISendCreateUserRequest().Name, content.Name);
+            //Snapshot.Match(content);
         }
         [Then(@"the API Response status code is (.*)")]
         public void ThenTheAPIResponseStatusCodeIs(int p0)
         {
             var api = new APIHelper<CreateUserDTO>();
             Assert.AreEqual(201, (int)api.GetStatusCode());
-         
+           // Snapshot.Match(WhenISendCreateUserRequest());
+
+
         }
         [Then(@"the API Response status description is ""([^""]*)""")]
         public void ThenTheAPIResponseStatusDescriptionIs(string created)
         {
             var api = new APIHelper<CreateUserDTO>();
             Assert.AreEqual(created, api.GetStatusDescription());
+
         }
 
 
